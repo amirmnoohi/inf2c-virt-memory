@@ -1,0 +1,52 @@
+R 0x00000000 0x00000000 TLB-MISS PAGE-FAULT CACHE-MISS
+R 0x00000080 0x00000080 TLB-HIT - CACHE-MISS
+R 0x00000100 0x00000100 TLB-HIT - CACHE-MISS
+R 0x00000180 0x00000180 TLB-HIT - CACHE-MISS
+R 0x00000200 0x00000200 TLB-HIT - CACHE-MISS
+W 0x00000000 0x00000000 TLB-HIT - CACHE-MISS
+R 0x00000080 0x00000080 TLB-HIT - CACHE-MISS
+W 0x00000280 0x00000280 TLB-HIT - CACHE-MISS
+R 0x00000100 0x00000100 TLB-HIT - CACHE-MISS
+R 0x00000180 0x00000180 TLB-HIT - CACHE-MISS
+W 0x00000300 0x00000300 TLB-HIT - CACHE-MISS
+R 0x00000200 0x00000200 TLB-HIT - CACHE-MISS
+
+* TLB Statistics *
+total accesses: 12
+hits: 11
+misses: 1
+
+* Page Table Statistics *
+total accesses: 12
+page faults: 1
+page faults with a dirty bit: 0
+
+* Cache Statistics *
+total accesses: 12
+hits: 0
+misses: 12
+total reads: 9
+read hits: 0
+total writes: 3
+write hits: 0
+
+TLB Entries (Valid-Bit Dirty-Bit VPN PPN)
+1 1 0x00000 0x00000
+0 0 - -
+0 0 - -
+0 0 - -
+0 0 - -
+0 0 - -
+0 0 - -
+0 0 - -
+0 0 - -
+0 0 - -
+0 0 - -
+0 0 - -
+0 0 - -
+0 0 - -
+0 0 - -
+0 0 - -
+
+Page Table Entries (Present-Bit Dirty-Bit VPN PPN)
+1 1 0x00000 0x00000
