@@ -11,6 +11,25 @@ C implementation for INF2C-CS coursework.
 
 ## Quick Start
 
+### Clone the Repository
+
+```bash
+# Install Git LFS first (required for large test files)
+sudo apt-get install git-lfs   # Ubuntu/Debian
+# or: sudo yum install git-lfs  # CentOS/RHEL
+
+# Initialize Git LFS
+git lfs install
+
+# Clone repository (LFS files download automatically)
+git clone https://github.com/amirmnoohi/inf2c-virt-memory.git
+cd inf2c-virt-memory/inf2cs-virt-memory-c
+```
+
+**Note**: Some test files (testcase38) use Git LFS. If you already cloned without LFS, run `git lfs pull` to download them.
+
+### Build and Test
+
 ```bash
 make        # Build (zero warnings)
 make test   # Test (100% passing - 50/50 tests)
