@@ -4,8 +4,8 @@
  * @author Amir Noohi
  * @copyright Copyright (c) 2025 Amir Noohi. All rights reserved.
  * 
- * Expert-level implementation that handles all cache configurations
- * through parameterization, not code duplication. Supports:
+ * Unified implementation that handles all cache configurations
+ * through parameterization. Supports:
  * - Direct-mapped, 2-way, 4-way, and fully-associative
  * - Variable block sizes
  * - Write-back, write-allocate policy

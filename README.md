@@ -5,9 +5,9 @@ Copyright (c) 2025 Amir Noohi
 
 # VM/Cache Simulator
 
-Expert C implementation for INF2C-CS coursework.
+C implementation for INF2C-CS coursework.
 
-**Features**: Unified cache (all associativities) • Multi-level hierarchy (L1+L2, L3-ready) • 39 test cases • Automated testing with colors
+**Features**: Unified cache (all associativities) • Multi-level hierarchy (L1+L2, L3-ready) • 39 test cases • Automated testing
 
 ## Quick Start
 
@@ -24,12 +24,12 @@ make test   # Test (100% passing - 39/39 tests)
 ## Structure
 
 ```
-include/    - 7 headers (complete interfaces, © Amir Noohi)
-src/        - 7 implementations (~3500 LOC, © Amir Noohi)
+include/    - 7 headers (complete interfaces)
+src/        - 7 implementations (~3500 LOC)
 skeleton/   - 3 student starters (cache, multilevel_cache, pagetable)
 tests/      - 39 test cases (from Go reference, 11 invalid configs removed)
 tools/      - Test automation scripts
-Makefile    - Professional build system
+Makefile    - Build system with debug/test targets
 ```
 
 ## Test Results
@@ -57,7 +57,7 @@ All valid test cases from the Go reference implementation pass perfectly with co
 
 - **Unified codebase** - Configuration-driven, single cache.c for all modes
 - **Extensible** - Add L3 with zero code changes (loop-based multilevel)
-- **Professional** - C11, strict warnings, zero leaks, comprehensive docs
+- **Clean implementation** - C11, strict warnings, zero leaks, comprehensive docs
 
 ## Architecture & Data Flow
 
