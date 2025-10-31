@@ -1,10 +1,8 @@
 /**
  * @file multilevel_cache.h
- * @brief Multi-level cache hierarchy (Task 4 and beyond)
+ * @brief Multi-level cache hierarchy (Task 4)
  * 
- * Extensible design supporting 2+ cache levels (L1, L2, L3, ...).
- * Task 4 uses 2 levels. Easily extensible to 3+ levels in future.
- * 
+ * 2-level cache design (L1, L2) for Task 4.
  * Reuses the unified cache implementation for each level.
  */
 
@@ -17,19 +15,16 @@
 /**
  * @brief Initialize multi-level cache hierarchy
  * 
- * Creates a cache hierarchy with the specified number of levels.
+ * Creates a 2-level cache hierarchy (L1 and L2) for Task 4.
  * Each level is implemented using the unified cache from cache.c.
  * 
- * For Task 4: num_levels = 2 (L1 and L2)
- * Future: Can support 3+ levels by passing more configurations
- * 
  * Algorithm:
- * 1. Validate num_levels (must be >= 2 and <= MAX_CACHE_LEVELS)
+ * 1. Validate num_levels (must be exactly 2)
  * 2. For each level, initialize cache using cache_init()
  * 3. Validate hierarchy (L2 >= L1, compatible block sizes, etc.)
  * 
- * @param configs Array of cache configurations (L1, L2, L3, ...)
- * @param num_levels Number of cache levels (2 for Task 4)
+ * @param configs Array of cache configurations [L1, L2]
+ * @param num_levels Number of cache levels (must be 2)
  * @return Pointer to multi-level cache structure, or NULL on error
  */
 multilevel_cache_t* multilevel_cache_init(cache_config_t *configs, uint32_t num_levels);

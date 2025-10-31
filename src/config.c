@@ -51,7 +51,7 @@ sim_config_t* parse_arguments(int argc, char *argv[]) {
     }
     
     /* Set defaults for Task 1 */
-    config->cache.associativity = FULLY_ASSOC;
+    config->cache.associativity = DIRECT_MAPPED;
     config->cache.block_size = DEFAULT_BLOCK_SIZE;
     config->cache.size = 0;  /* Must be specified */
     

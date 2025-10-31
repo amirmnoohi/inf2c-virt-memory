@@ -23,10 +23,9 @@ static cache_result_t encode_hit_level(uint32_t level) {
 }
 
 /**
- * @brief Validate multi-level cache hierarchy
+ * @brief Validate 2-level cache hierarchy
  * 
- * Ensures that cache sizes are increasing (L2 >= L1 >= ...)
- * and block sizes are compatible.
+ * Ensures that L2 size >= L1 size and block sizes are compatible.
  */
 static bool validate_hierarchy(cache_config_t *configs, uint32_t num_levels) {
     for (uint32_t i = 1; i < num_levels; i++) {
@@ -47,10 +46,10 @@ static bool validate_hierarchy(cache_config_t *configs, uint32_t num_levels) {
 }
 
 multilevel_cache_t* multilevel_cache_init(cache_config_t *configs, uint32_t num_levels) {
-    /* Validate input */
-    if (num_levels < 2 || num_levels > MAX_CACHE_LEVELS) {
-        fprintf(stderr, "Invalid number of cache levels: %u (must be 2-%u)\n",
-                num_levels, MAX_CACHE_LEVELS);
+    /* Validate input - Task 4 requires exactly 2 levels */
+    if (num_levels != 2) {
+        fprintf(stderr, "Invalid number of cache levels: %u (Task 4 requires exactly 2 levels)\n",
+                num_levels);
         return NULL;
     }
     
@@ -100,8 +99,8 @@ cache_result_t multilevel_cache_access(multilevel_cache_t *mlc,
     }
     
     /*
-     * Extensible loop-based access pattern
-     * Works for 2, 3, 4, or more levels without code changes
+     * 2-level cache access pattern for Task 4
+     * Check L1 first, then L2 on miss
      */
     for (uint32_t level = 0; level < mlc->num_levels; level++) {
         cache_t *cache = mlc->levels[level];
@@ -116,28 +115,16 @@ cache_result_t multilevel_cache_access(multilevel_cache_t *mlc,
         
         if (result == CACHE_HIT) {
             /*
-             * HIT at this level
-             * 
-             * In a real system, we might promote data to upper levels here.
-             * For simplicity in this simulator, we just return the hit.
-             * 
-             * Future enhancement: Implement inclusion policy
-             * - Inclusive: Ensure upper levels also have the data
-             * - Exclusive: Move data from lower to upper level
+             * HIT at this level (L1 or L2)
+             * Return encoded result indicating which level hit
              */
             return encode_hit_level(level);
         }
     }
     
     /*
-     * Missed at all levels - fetch from memory
-     * 
-     * In a real system, we would:
-     * 1. Fetch block from memory
-     * 2. Install in all levels (inclusive policy) or just lowest (exclusive)
-     * 
-     * In this simulator, the cache_access() calls already handle
-     * installation, so we just return the miss status.
+     * Missed at both L1 and L2 - fetch from memory
+     * The cache_access() calls already handle installation
      */
     return CACHE_MISS_ALL_LEVELS;
 }

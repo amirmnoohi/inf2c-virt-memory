@@ -5,8 +5,8 @@
  * @copyright Copyright (c) 2025 Amir Noohi. All rights reserved.
  * 
  * Single cache implementation that handles all associativity modes:
- * - Task 1: Fully associative, fixed block size
- * - Task 2: Fully associative, variable block size
+ * - Task 1: Direct-mapped, fixed block size (4 bytes)
+ * - Task 2: Direct-mapped, variable block size
  * - Task 3: All associativity modes (direct-mapped, 2-way, 4-way, fully-assoc)
  * 
  * Also used as building block for Task 4 multi-level cache (L1 and L2).

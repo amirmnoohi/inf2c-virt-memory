@@ -23,11 +23,11 @@
 #define PAGE_SIZE 4096              /* 4KB pages */
 #define NUM_PHYSICAL_PAGES 256      /* 1MB physical memory */
 #define PAGE_TABLE_ENTRIES (1 << 14) /* 2^14 entries for 26-bit virtual addresses */
-#define MAX_CACHE_LEVELS 4          /* Support up to 4 cache levels (L1-L4) */
+#define MAX_CACHE_LEVELS 2          /* Task 4: 2-level cache (L1+L2) */
 
 /* Default values for Task 1 */
-#define DEFAULT_BLOCK_SIZE 16
-#define DEFAULT_ASSOC FULLY_ASSOC
+#define DEFAULT_BLOCK_SIZE 4
+#define DEFAULT_ASSOC DIRECT_MAPPED
 
 /* ============================================================================
  * Enumerations
@@ -133,10 +133,10 @@ struct cache_set_s {
  * @brief Unified cache structure (handles all associativities)
  * 
  * Single cache implementation that works for:
- * - Task 1: Fully associative
- * - Task 2: Fully associative with variable block sizes
- * - Task 3: All associativity modes
- * - Task 4: Used as L1 and L2 in multilevel cache
+ * - Task 1: Direct-mapped, 4-byte blocks
+ * - Task 2: Direct-mapped with variable block sizes
+ * - Task 3: All associativity modes (direct-mapped, 2-way, 4-way, fully-assoc)
+ * - Task 4: Used as L1 and L2 in 2-level cache
  */
 struct cache_s {
     /* Configuration */
@@ -174,10 +174,9 @@ struct cache_config_s {
 };
 
 /**
- * @brief Multi-level cache (extensible to L1, L2, L3, ...)
+ * @brief Multi-level cache for Task 4
  * 
- * Supports 2+ cache levels. Task 4 uses 2 levels (L1, L2).
- * Designed to easily extend to 3+ levels in the future.
+ * Supports exactly 2 cache levels (L1, L2) for Task 4.
  */
 struct multilevel_cache_s {
     uint32_t num_levels;                      /* Number of cache levels */

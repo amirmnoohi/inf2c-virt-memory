@@ -3,8 +3,8 @@
  * @brief Unified cache implementation - TO BE COMPLETED BY STUDENTS
  * 
  * Complete the functions below to implement a cache that supports:
- * - Task 1: Fully associative cache
- * - Task 2: Variable block sizes
+ * - Task 1: Direct-mapped cache with 4-byte blocks
+ * - Task 2: Direct-mapped with variable block sizes
  * - Task 3: All associativity modes (direct-mapped, 2-way, 4-way, fully-assoc)
  */
 
@@ -32,8 +32,8 @@ uint32_t log2_uint32(uint32_t n) {
  * ============================================================================ */
 
 uint32_t cache_get_index(const cache_t *cache, uint32_t addr) {
-    // TODO: Task 1 - For fully associative, return 0
-    // TODO: Task 3 - For set-associative/direct-mapped, extract index bits
+    // TODO: Task 1 - For direct-mapped, extract index bits
+    // TODO: Task 3 - For fully-associative, return 0; for set-associative, extract index bits
     // Hint: offset_bits tells you where index starts
     // Hint: index_bits tells you how many bits to extract
     
@@ -69,8 +69,8 @@ cache_t* cache_init(cache_config_t config) {
     
     // TODO: Task 1 - Calculate cache geometry (num_sets, ways_per_set)
     //       Hints:
-    //       - For fully-assoc: num_sets=1, ways_per_set=size/block_size
     //       - For direct-mapped: num_sets=size/block_size, ways_per_set=1
+    //       - For fully-assoc: num_sets=1, ways_per_set=size/block_size
     //       - For 2-way: num_sets=size/(block_size*2), ways_per_set=2
     //       - For 4-way: num_sets=size/(block_size*4), ways_per_set=4
     
@@ -88,8 +88,8 @@ cache_t* cache_init(cache_config_t config) {
     // TODO: Task 1 - For each line, use malloc/calloc to allocate data block
     //       REQUIRED: lines[j].data = calloc(block_size, sizeof(uint8_t));
     
-    // TODO: Task 1 - Initialize LRU tracking for set-associative/fully-assoc
-    //       NOTE: Direct-mapped does NOT need LRU (only 1 way per set)
+    // TODO: Task 1 - Direct-mapped does NOT need LRU (only 1 way per set)
+    // TODO: Task 3 - Initialize LRU tracking for set-associative/fully-assoc
     //       For SA/FA: Create doubly-linked list (head <-> line[0] <-> ... <-> tail)
     
     // TODO: Task 2 - Handle variable block sizes
