@@ -7,13 +7,13 @@ Copyright (c) 2025 Amir Noohi
 
 C implementation for INF2C-CS coursework.
 
-**Features**: Unified cache (all associativities) • Multi-level hierarchy (L1+L2, L3-ready) • 39 test cases • Automated testing
+**Features**: Unified cache (all associativities) • Multi-level hierarchy (L1+L2, L3-ready) • 50 test cases • Automated testing
 
 ## Quick Start
 
 ```bash
 make        # Build (zero warnings)
-make test   # Test (100% passing - 39/39 tests)
+make test   # Test (100% passing - 50/50 tests)
 ```
 
 ## Documentation
@@ -27,17 +27,16 @@ make test   # Test (100% passing - 39/39 tests)
 include/    - 7 headers (complete interfaces)
 src/        - 7 implementations (~3500 LOC)
 skeleton/   - 3 student starters (cache, multilevel_cache, pagetable)
-tests/      - 39 test cases (from Go reference, 11 invalid configs removed)
+tests/      - 50 test cases with comprehensive coverage
 tools/      - Test automation scripts
 Makefile    - Build system with debug/test targets
 ```
 
 ## Test Results
 
-**✅ 100% PASSING (39/39 valid test cases)**
+**✅ 100% PASSING (50/50 test cases)**
 
-All valid test cases from the Go reference implementation pass perfectly with color-coded output.
-11 invalid configuration test cases removed - our code correctly validates and rejects bad configs!
+All test cases pass with automated verification. The implementation correctly handles all cache configurations and validates invalid inputs.
 
 ## Usage Examples
 
